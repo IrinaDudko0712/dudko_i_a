@@ -1,0 +1,33 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+ 
+int main() {
+    int k, amount, digit[5];
+    cin >> k;
+    int number[k];
+    for (int i = 1; i < k + 1; i++) {
+        cin >> number[i];
+    }
+    for (int j = 1; j < k + 1; j++) {
+        amount = 0;
+        digit[4] = number[j] / 10000;
+        digit[3] = number[j] % 10000 / 1000;
+        digit[2] = number[j] % 10000 % 1000 / 100;
+        digit[1] = number[j] % 10000 % 1000 % 100 / 10;
+        digit[0] = number[j] % 10;
+        for (int q = 0; q < 5; q++) {
+            if (digit[q] > 0) {
+            amount += 1;
+            }
+        }
+        cout << endl;
+        cout << amount << endl;
+        for (int g = 4; g > -1; g--) {
+            if (digit[g] > 0) {
+                cout << digit[g] * pow(10, g) << ' '<<endl;
+            }
+        }
+    }
+    return 0;
+}
